@@ -1,0 +1,122 @@
+
+/* theme.css — Dark neon theme for the 2048 clone
+   Drop this file next to 2048.html and load it with a <link> tag,
+   or inject it via a bookmarklet/DevTools (see chat instructions).
+*/
+
+/* Override the color variables from the original */
+:root {
+  --bg: #0e0f13;
+  --board: #1b1e27;
+  --empty: #232634;
+  --tile-2: #2dd4bf;      /* teal */
+  --tile-4: #60a5fa;      /* blue */
+  --tile-8: #a78bfa;      /* violet */
+  --tile-16: #f472b6;     /* pink */
+  --tile-32: #fb7185;     /* rose */
+  --tile-64: #f59e0b;     /* amber */
+  --tile-128: #84cc16;    /* lime */
+  --tile-256: #10b981;    /* emerald */
+  --tile-512: #22d3ee;    /* cyan */
+  --tile-1024: #c084fc;   /* purple */
+  --tile-2048: #f97316;   /* orange */
+  --dark: #e5e7eb;        /* text base */
+  --light: #0b0c10;       /* text on bright tiles */
+}
+
+/* Global look */
+body {
+  background: radial-gradient(1200px 800px at 20% 10%, #171923, #0e0f13);
+  color: var(--dark) !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+}
+
+h1 {
+  color: #e5e7eb !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.4);
+}
+
+.badge {
+  background: #2a2f3a !important;
+  color: #e5e7eb !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+
+.actions button {
+  background: #3b4150 !important;
+  color: #f8fafc !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+}
+
+/* Board and cells */
+.board {
+  background: var(--board) !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,.45);
+}
+
+.cell {
+  background: #2a2f3a !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+}
+
+/* Tiles */
+.tile {
+  border-radius: 14px !important;
+  text-shadow: 0 2px 0 rgba(0,0,0,.25);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35),
+    inset 0 -3px 0 rgba(0,0,0,.15);
+  transition: transform 110ms ease, left 110ms ease, top 110ms ease, box-shadow 150ms ease !important;
+}
+
+/* Subtle hover on desktop for fun */
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover { box-shadow: 0 14px 30px rgba(0,0,0,.45), inset 0 -3px 0 rgba(0,0,0,.18); }
+}
+
+/* Updated pop animation */
+@keyframes pop {
+  from { transform: scale(.7); opacity: .3; filter: saturate(0.8); }
+  to   { transform: scale(1); opacity: 1; filter: saturate(1.1); }
+}
+
+/* Tile colors (use the variables we overrode above) */
+.t-2    { background: var(--tile-2) !important;    color: var(--light) !important; }
+.t-4    { background: var(--tile-4) !important;    color: var(--light) !important; }
+.t-8    { background: var(--tile-8) !important;    color: #0b0c10 !important; }
+.t-16   { background: var(--tile-16) !important;   color: #0b0c10 !important; }
+.t-32   { background: var(--tile-32) !important;   color: #0b0c10 !important; }
+.t-64   { background: var(--tile-64) !important;   color: #0b0c10 !important; }
+.t-128  { background: var(--tile-128) !important;  color: #0b0c10 !important; font-size: clamp(18px, 5.5vw, 28px) !important; }
+.t-256  { background: var(--tile-256) !important;  color: #0b0c10 !important; font-size: clamp(18px, 5.5vw, 28px) !important; }
+.t-512  { background: var(--tile-512) !important;  color: #0b0c10 !important; font-size: clamp(18px, 5.5vw, 28px) !important; }
+.t-1024 { background: var(--tile-1024) !important; color: #0b0c10 !important; font-size: clamp(14px, 4.5vw, 24px) !important; }
+.t-2048 { background: var(--tile-2048) !important; color: #0b0c10 !important; font-size: clamp(14px, 4.5vw, 24px) !important; }
+
+/* Overlay (win/lose) */
+.overlay {
+  background: rgba(0,0,0,.55) !important;
+}
+
+.overlay .card {
+  background: #151823 !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 16px 50px rgba(0,0,0,.55);
+}
+
+#retry {
+  background: #47506a !important;
+  color: #f8fafc !important;
+  border-radius: 10px !important;
+}
+
+/* Footer text */
+.footer { color: #cbd5e1 !important; opacity: .9 !important; }
+
